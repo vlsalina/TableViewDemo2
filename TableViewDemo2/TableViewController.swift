@@ -9,11 +9,21 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    struct CellDataStruct {
+        var icon : String
+        var label : String
+        
+        init(_ icon: String, _ label: String) {
+            self.icon = icon
+            self.label = label
+        }
+    }
     
+    var cellData = [CellDataStruct]()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialization()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +33,13 @@ class TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    func initialization() {
+        cellData.append(CellDataStruct("gearshape", "General"))
+        cellData.append(CellDataStruct("gearshape", "Accessibility"))
+        cellData.append(CellDataStruct("gearshape", "Privacy"))
+       
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -31,15 +48,16 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return cellData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
 
         // Configure the cell...
-        cell.tableViewCellLabel.text = "Hello World!"
-        cell.tableViewCellImage.image = UIImage(systemName: "gearshape")
+        let row = indexPath.row
+        cell.tableViewCellLabel.text = cellData[row].label
+        cell.tableViewCellImage.image = UIImage(systemName: cellData[row].icon)
 
         return cell
     }
