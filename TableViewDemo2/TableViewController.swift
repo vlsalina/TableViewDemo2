@@ -9,17 +9,27 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    struct CellDataStruct {
+    struct SettingStruct {
         var icon : String
-        var label : String
-        
-        init(_ icon: String, _ label: String) {
+        var setting : String
+        init(_ icon: String, _ setting: String) {
             self.icon = icon
-            self.label = label
+            self.setting = setting
         }
     }
     
-    var cellData = [CellDataStruct]()
+    struct SectionStruct {
+        let section : Int
+        var settings : [SettingStruct]
+        
+        init(_ section: Int, _ settings: [SettingStruct]) {
+            self.section = section
+            self.settings = settings
+        }
+    }
+    
+    var tableData = [SectionStruct]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,30 +45,43 @@ class TableViewController: UITableViewController {
     // MARK: - Table view data source
     
     func initialization() {
-        cellData.append(CellDataStruct("gearshape", "General"))
-        cellData.append(CellDataStruct("gearshape", "Accessibility"))
-        cellData.append(CellDataStruct("gearshape", "Privacy"))
-       
+        tableData.append(SectionStruct(0, [
+            SettingStruct("gearshape", "General"),
+            SettingStruct("gearshape", "Accessibility"),
+            SettingStruct("gearshape", "Privacy")
+        ]))
+        tableData.append(SectionStruct(1, [
+            SettingStruct("gearshape", "Passwords"),
+        ]))
+        tableData.append(SectionStruct(2, [
+            SettingStruct("gearshape", "Safari"),
+            SettingStruct("gearshape", "News"),
+            SettingStruct("gearshape", "Translate"),
+            SettingStruct("gearshape", "Maps"),
+            SettingStruct("gearshape", "Shortcuts"),
+            SettingStruct("gearshape", "Health"),
+            SettingStruct("gearshape", "Siri & Search")
+        ]))
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return tableData.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cellData.count
+        return tableData[section].settings.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
 
         // Configure the cell...
-        let row = indexPath.row
-        cell.tableViewCellLabel.text = cellData[row].label
-        cell.tableViewCellImage.image = UIImage(systemName: cellData[row].icon)
-
+        cell.tableViewCellLabel.text = tableData[indexPath.section].settings[indexPath.row].setting
+        cell.tableViewCellImage.image = UIImage(systemName: tableData[indexPath.section].settings[indexPath.row].icon
+        )
+        
         return cell
     }
 
