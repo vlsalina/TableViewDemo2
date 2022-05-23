@@ -104,7 +104,7 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
 
         // Configure the cell...
-        cell.tableViewCellLabel.text = tableData[indexPath.section].settings[indexPath.row].setting
+        cell.tableViewCellButton.setTitle(tableData[indexPath.section].settings[indexPath.row].setting, for: UIControl.State.normal)
         cell.tableViewCellImage.image = UIImage(systemName: tableData[indexPath.section].settings[indexPath.row].icon
         )
         

@@ -11,6 +11,7 @@ class TableViewCellController: UITableViewCell {
 
     @IBOutlet weak var tableViewCellImage: UIImageView!
     @IBOutlet weak var tableViewCellLabel: UILabel!
+    @IBOutlet weak var tableViewCellButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
