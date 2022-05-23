@@ -84,6 +84,20 @@ class TableViewController: UITableViewController {
         
         return cell
     }
+    
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "header"
+//    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        
+        view.backgroundColor = .white
+        
+        return view
+    }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
