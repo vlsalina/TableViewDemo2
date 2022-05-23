@@ -34,6 +34,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialization()
+        setHeader("Settings")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,6 +44,31 @@ class TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    func setHeader(_ title: String) {
+        
+        let headerHeight = 100
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.blue
+        headerView.frame = CGRect(x: 0, y: 0, width: Int(view.frame.width), height: headerHeight)
+        
+//        let footerView = UIView()
+//        footerView.backgroundColor = UIColor.orange
+//        footerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        
+//        tableView.tableFooterView = footerView
+        
+        // set Heading
+        let heading = UILabel(frame: CGRect(x: 15, y: 0, width: Int(view.frame.width) - 15, height: headerHeight))
+        heading.adjustsFontSizeToFitWidth = true
+        heading.minimumScaleFactor = 1
+        heading.font = heading.font.withSize(30)
+        heading.text = title
+        heading.textColor = UIColor.white
+        headerView.addSubview(heading)
+        
+        tableView.tableHeaderView = headerView
+    }
     
     func initialization() {
         tableData.append(SectionStruct(0, [
@@ -84,6 +110,7 @@ class TableViewController: UITableViewController {
         
         return cell
     }
+    
     
 //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return "header"
