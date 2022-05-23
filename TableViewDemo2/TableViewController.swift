@@ -73,20 +73,20 @@ class TableViewController: UITableViewController {
     func initialization() {
         tableData.append(SectionStruct(0, [
             SettingStruct("gearshape", "General"),
-            SettingStruct("gearshape", "Accessibility"),
-            SettingStruct("gearshape", "Privacy")
+            SettingStruct("person", "Accessibility"),
+            SettingStruct("lock", "Privacy")
         ]))
         tableData.append(SectionStruct(1, [
-            SettingStruct("gearshape", "Passwords"),
+            SettingStruct("key", "Passwords"),
         ]))
         tableData.append(SectionStruct(2, [
-            SettingStruct("gearshape", "Safari"),
-            SettingStruct("gearshape", "News"),
-            SettingStruct("gearshape", "Translate"),
-            SettingStruct("gearshape", "Maps"),
+            SettingStruct("safari", "Safari"),
+            SettingStruct("newspaper", "News"),
+            SettingStruct("bubble.left.and.bubble.right", "Translate"),
+            SettingStruct("map", "Maps"),
             SettingStruct("gearshape", "Shortcuts"),
-            SettingStruct("gearshape", "Health"),
-            SettingStruct("gearshape", "Siri & Search")
+            SettingStruct("heart", "Health"),
+            SettingStruct("magnifyingglass", "Siri & Search")
         ]))
     }
 
